@@ -1,0 +1,17 @@
+version: "3.7"
+
+services:
+  netcup-ddns:
+    container_name: netcup-ddns
+    hostname: netcup-ddns
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DOMAIN: $DOMAIN
+      SUBDOMAINS: $SUBDOMAINS
+      INTERVAL: $INTERVAL
+      NETCUP_CUSTOMER_NUMBER: $NETCUP_CUSTOMER_NUMBER
+      NETCUP_API_KEY: $NETCUP_API_KEY
+      NETCUP_API_PASSWORD: $NETCUP_API_PASSWORD
+    restart: unless-stopped
